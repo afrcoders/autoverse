@@ -1,0 +1,17 @@
+<svg width="192" height="192" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="58" y1="54" x2="457" y2="470" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#151c2c"/>
+      <stop offset="1" stop-color="#0b0f19"/>
+    </linearGradient>
+    <linearGradient id="ring" x1="97" y1="77" x2="426" y2="442" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f5a623"/>
+      <stop offset="1" stop-color="#fbbf24"/>
+    </linearGradient>
+  </defs>
+  <rect x="20" y="20" width="472" height="472" rx="128" fill="url(#bg)"/>
+  <circle cx="256" cy="208" r="128" fill="#111827" stroke="url(#ring)" stroke-width="16"/>
+  <path d="M194 145H266C302 145 327 169 327 201C327 226 310 246 282 252L327 317H280L241 259H231V317H194V145ZM262 229C276 229 289 220 289 203C289 185 276 176 262 176H231V229H262Z" fill="#f5a623"/>
+  <path d="M168 222C168 178 201 145 248 145C279 145 303 159 315 180L286 197C278 183 265 175 248 175C222 175 206 194 206 222C206 250 222 270 248 270C265 270 278 261 286 248L315 265C302 286 278 300 248 300C201 300 168 266 168 222Z" fill="#f0f4f8"/>
+  <text x="256" y="418" fill="#f5a623" text-anchor="middle" font-size="54" font-weight="800" font-family="Arial, Helvetica, sans-serif" letter-spacing="4">CJ</text>
+</svg>

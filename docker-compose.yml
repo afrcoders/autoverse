@@ -1,0 +1,77 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: autoverse_app
+    restart: unless-stopped
+    working_dir: /var/www/html
+    volumes:
+      - .:/var/www/html
+      - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    networks:
+      - autoverse
+    depends_on:
+      - mysql
+      - redis
+
+  nginx:
+    image: nginx:alpine
+    container_name: autoverse_nginx
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - autoverse
+    depends_on:
+      - app
+
+  mysql:
+    image: mysql:8.0
+    container_name: autoverse_mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE:-autoverse}
+      MYSQL_USER: ${DB_USERNAME:-autoverse}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-secret}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-rootsecret}
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - autoverse
+
+  redis:
+    image: redis:7-alpine
+    container_name: autoverse_redis
+    restart: unless-stopped
+    ports:
+      - "6380:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - autoverse
+
+  mailpit:
+    image: axllent/mailpit:latest
+    container_name: autoverse_mailpit
+    restart: unless-stopped
+    ports:
+      - "8025:8025"
+      - "1025:1025"
+    networks:
+      - autoverse
+
+networks:
+  autoverse:
+    driver: bridge
+
+volumes:
+  mysql_data:
+  redis_data:

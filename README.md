@@ -45,7 +45,7 @@ Autoverse is a comprehensive automotive dealership management system built with 
 
 ```bash
 # Clone the repository
-git clone https://github.com/dhtml/autoverse.git
+git clone https://github.com/afrcoders/autoverse.git
 cd autoverse
 
 # Install with Make
@@ -85,7 +85,7 @@ CACHE_DRIVER=redis
 ## Project Structure
 
 ```
-blessedcjauto/
+autoverse/
 ├── app/
 │   ├── Http/Controllers/
 │   ├── Models/
